@@ -38,6 +38,6 @@ class Catalogue {
 
 Produit <|-- ProduitAlimentaire
 Produit <|-- ProduitElectronique
-Produit "0..*" -> "0..*" Catalogue
+Catalogue "0..1" -> "0..*" Produit
 
 @enduml
