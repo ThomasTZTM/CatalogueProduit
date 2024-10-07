@@ -1,0 +1,43 @@
+@startuml
+class Produit {
+  - string nom
+  - float prixInitial
+  - int quantite
+
+  + __construct(string $nom, float $prixInitial, int $quantite)
+  + afficherInfos() : void
+  + calculerPrixFinal() : float
+}
+
+class ProduitAlimentaire {
+  - datetime datePeremption
+
+  + __construct(string $nom, float $prixInitial, int $quantite, DateTime $datePeremption)
+  + afficherInfos() : float
+  + calculerPrixFinal() : float
+
+  }
+
+class ProduitElectronique {
+  - int garantie
+
+  + __construct(string $nom, float $prixInitial, int $quantite, int $garantie)
+  + afficherInfos() : void
+  + calculerPrixFinal() : float
+}
+
+
+class Catalogue {
+  - Array produits
+
+  + __construct(Array $produits)
+  + ajouterProduit(Produit $produit) : void
+  + afficherProduits() : void
+  + calculerTotalPrix() : void
+}
+
+Produit <|-- ProduitAlimentaire
+Produit <|-- ProduitElectronique
+Produit "0..*" -> "0..*" Catalogue
+
+@enduml
