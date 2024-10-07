@@ -31,7 +31,8 @@ class ProduitAlimentaire extends Produit
     }
 
     public function calculerPrixFinal(): float{
-        if (1==1){
+        $mtn = new \DateTime('now');
+        if (($this->datePeremption->diff($mtn->modify('-7 days'))->format('%a'))<7){
             return $this->prixInitial * 0.70;
         }
         return $this->prixInitial;
